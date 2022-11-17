@@ -39,9 +39,6 @@ class BrandAccessoryDataSource extends DataSource {
     return `brand-acc-${id}`;
   }
 
-  async getAll() {
-    return;
-  }
   async get(id) {
     const cacheDoc = await this.cache.get(this.cacheKey(id));
     if (cacheDoc) {
