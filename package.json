@@ -14,6 +14,7 @@
     "apollo-server": "^3.11.1",
     "apollo-server-caching": "^3.3.0",
     "dataloader": "^2.1.0",
+    "graphql-type-decimal": "^1.0.0",
     "nodemon": "^2.0.20"
   }
 }
