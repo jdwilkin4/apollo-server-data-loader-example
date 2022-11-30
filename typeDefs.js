@@ -5,7 +5,7 @@ const typeDefs = gql`
     id: ID!
     product: String!
     price: Float
-    brandId: ID!
+    brandId: Int
   }
 
   type Brand {

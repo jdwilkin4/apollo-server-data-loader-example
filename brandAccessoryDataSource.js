@@ -7,18 +7,11 @@ class BrandAccessoryDataSource extends DataSource {
   constructor() {
     super();
     this.loader = new DataLoader((ids) => {
-      return new Promise((resolve, reject) => {
-        if (!ids.length) {
-          resolve(musicAccessories);
-        }
-        setTimeout(
-          () =>
-            resolve(
-              musicAccessories.filter((accessory) => ids.includes(accessory.id))
-            ),
-          5000
-        );
-      });
+      if (!ids.length) {
+        return musicAccessories;
+      }
+
+      return musicAccessories.filter((accessory) => ids.includes(accessory.id));
     });
   }
 
@@ -55,17 +48,9 @@ class BrandAccessoryDataSource extends DataSource {
       return JSON.parse(cacheDoc);
     }
 
-    const musicBrandAccessories = await new Promise((resolve, reject) => {
-      setTimeout(
-        () =>
-          resolve(
-            musicAccessories.filter(
-              (accessory) => accessory.brandId === brand.id
-            )
-          ),
-        5000
-      );
-    });
+    const musicBrandAccessories = musicAccessories.filter(
+      (accessory) => accessory.brandId === brand.id
+    );
 
     this.cache.set(
       this.cacheBrandKey(brand.id),
