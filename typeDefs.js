@@ -1,12 +1,12 @@
 const { gql } = require("apollo-server");
-const { GraphQLDecimal } = require("graphql-type-decimal");
+
 const typeDefs = gql`
-  scalar Decimal
+  scalar USCurrency
 
   type Accessory {
     id: ID!
     product: String!
-    price: Decimal
+    price: USCurrency
     brandId: Int
   }
 

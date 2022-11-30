@@ -2,8 +2,10 @@ const { ApolloServer } = require("apollo-server");
 const typeDefs = require("./typeDefs");
 const { BrandAccessoryDataSource } = require("./brandAccessoryDataSource");
 const { musicBrands } = require("./musicData");
+const { USCurrency } = require("graphql-currency-scalars");
 
 const resolvers = {
+  USCurrency,
   Query: {
     brands: () => musicBrands,
     accessory: (_, { id }, context) => context.dataSources.brandAcc.get(id),
